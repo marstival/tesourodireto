@@ -4,10 +4,13 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots # Import the make_subplots function
 
+#Exemplos
 
-
-# prompt: read the file upladed above and load it to a pandas dataframe; then parse the date fields, Data Vencimento, and Data Base to datetime
-
+#Tesouro IPCA+  2029
+#Tesouro Selic 2029
+#Tesouro Renda+ Aposentadoria Extra 2049
+TIPO = "Tesouro Renda+ Aposentadoria Extra"
+VCTO = 2049
 
 # Read the uploaded file into a pandas dataframe
 df = pd.read_csv('../data/PrecoTaxaTesouroDireto.csv',delimiter=';', decimal=',', encoding='latin1')
@@ -23,9 +26,7 @@ print( df['Tipo Titulo'].unique())
 
 
 filtered_df = df[
-    #(df['Tipo Titulo'] == "Tesouro IPCA+") & (df['Data Vencimento'].dt.year == 2029)
-    (df['Tipo Titulo'] == "Tesouro Renda+ Aposentadoria Extra") & (df['Data Vencimento'].dt.year == 2049)
-    #(df['Tipo Titulo'] == "Tesouro Selic") & (df['Data Vencimento'].dt.year == 2029)
+    (df['Tipo Titulo'] == TIPO) & (df['Data Vencimento'].dt.year == VCTO)
 ]
 #Tesouro Renda+ Aposentadoria Extra
 #print(filtered_df)
