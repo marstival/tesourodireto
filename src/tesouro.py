@@ -28,7 +28,6 @@ print( df['Tipo Titulo'].unique())
 filtered_df = df[
     (df['Tipo Titulo'] == TIPO) & (df['Data Vencimento'].dt.year == VCTO)
 ]
-#Tesouro Renda+ Aposentadoria Extra
 #print(filtered_df)
 
 
