@@ -15,4 +15,4 @@ https://www.tesourotransparente.gov.br/ckan/dataset/taxas-dos-titulos-ofertados-
 
 Exemplo (fig1.html)
 
-https://html-preview.github.io/?url=https://raw.githubusercontent.com/marstival/tesourodireto/main/fig1.html
+https://html-preview.github.io/?url=https://raw.githubusercontent.com/marstival/tesourodireto/main/src/fig1.html
