@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+src/.ipynb_checkpoints/
+
+# Data (large CSV — downloaded at runtime)
+data/PrecoTaxaTesouroDireto.csv
+src/PrecoTaxaTesouroDireto.csv
+
+# Generated artefacts
+src/fig1.html
