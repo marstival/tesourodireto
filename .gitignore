@@ -13,3 +13,6 @@ src/PrecoTaxaTesouroDireto.csv
 
 # Generated artefacts
 src/fig1.html
+ 
+# macOS
+.DS_Store
