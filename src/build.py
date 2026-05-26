@@ -46,7 +46,11 @@ def build():
     df["PU Compra Manha"]   = pd.to_numeric(df["PU Compra Manha"],    errors="coerce")
     print(f"Loaded {len(df):,} records.")
 
-    out = {"updated": str(datetime.date.today()), "titulos": {}}
+    # Use the latest available "Data Base" in the CSV as the updated date
+    # so the site shows the true last-observed data point instead of the
+    # build/run date (which can be misleading when the CSV is stale).
+    latest = df["Data Base"].max()
+    out = {"updated": str(latest.date()), "titulos": {}}
 
     for titulo, group in df.groupby("Tipo Titulo"):
         out["titulos"][titulo] = {}
