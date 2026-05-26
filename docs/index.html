@@ -222,7 +222,8 @@ let DATA = null;   // full JSON from tesouro.json
 async function init() {
   const status = document.getElementById('status');
   try {
-    const res  = await fetch('data/tesouro.json');
+    // Add a cache-busting query param to avoid stale CDN/browser caches
+    const res  = await fetch('data/tesouro.json?v=' + Date.now());
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     DATA = await res.json();
 
