@@ -12,6 +12,8 @@ import datetime
 from pathlib import Path
 from urllib.request import urlretrieve
 
+from urllib.request import Request, urlopen
+
 import numpy as np
 import pandas as pd
 
@@ -25,6 +27,7 @@ CSV_PATH  = Path("data/PrecoTaxaTesouroDireto.csv")
 JSON_PATH = Path("docs/data/tesouro.json")
 
 
+
 def download():
     CSV_PATH.parent.mkdir(parents=True, exist_ok=True)
     if CSV_PATH.exists():
@@ -33,8 +36,14 @@ def download():
             print(f"CSV already up to date ({mtime}) — skipping download.")
             return
     print("Downloading CSV …")
-    urlretrieve(URL, CSV_PATH)
-    print(f"Saved to {CSV_PATH}")
+    try:
+        # Configure request with User-Agent header to bypass potential 429 block
+        req = Request(URL, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        with urlopen(req) as response, open(CSV_PATH, 'wb') as out_file:
+            out_file.write(response.read())
+        print(f"Saved to {CSV_PATH}")
+    except Exception as e:
+        print(f"Error downloading data: {e}")
 
 
 def build():
